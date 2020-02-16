@@ -15,3 +15,15 @@ Therefore, we define a matrix including the abs. value of the end position of th
 
 In BFS, all cells having shortest path as 1 are visited first, followed by their adjacent cells having shortest path as 1+1=2 and so on. In BFS, the first occurance of the destination cell gives us the result and we can stop our search.
 
+How to run from Command Line:
+Run the following command: python (Your local directory path)/WovenCodeTest/DistanceFromStart.py 
+This command will ask you to enter Directions after successful execution.
+
+Sample Input: String of the form: F1,R1,B2,L1,B3 
+Sample Output: Final position:  (2, -2) 
+               Shortest path from source to destination has length:  4
+
+Test 1: Any other input other than this form will not execute the code further. (Nulls, other string formats, integers)
+Test 2: Check if robot can turn more than once to left or right in one move.
+Test 3: Check the smallest path if the robot is at the origin.
+Test 4: Check if robot moves only in 4 directions and not diagonally.
