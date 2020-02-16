@@ -33,21 +33,21 @@ def main():
         # If move is forward or backward, then change x or y according to the current direction
         else:  # if move == 'G'
             if dir == N and move == "F":
-                y -= 1
-            elif dir == N and move == "B":
-                y+=1
-            elif dir == E and move == "F":
-                x += 1
-            elif dir == E and move == "B":
-                x-=1
-            elif dir == S and move == "F":
-                y += 1
-            elif dir == S and move == "B":
-                y-=1
-            elif dir == W and move == "F":
                 x -= 1
+            elif dir == N and move == "B":
+                x+=1
+            elif dir == E and move == "F":
+                y += 1
+            elif dir == E and move == "B":
+                y-=1
+            elif dir == S and move == "F":
+                x += 1
+            elif dir == S and move == "B":
+                x-=1
+            elif dir == W and move == "F":
+                y -= 1
             elif dir == W and move == "B":
-                x +=1
+                y +=1
 
     print ("Final position: ", (x,y))
 
