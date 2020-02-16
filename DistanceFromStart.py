@@ -1,5 +1,7 @@
 # Import packages
 import re
+from ShortestPath import *
+import numpy as np
 
 def main():
 
@@ -65,6 +67,9 @@ def main():
 
         # The final stopping position of the robot can be in negative space as the robot is moving freely in a 2D space.
         # But, the distance from the origin of any particular point in negative space is same as the absolute distance.
+
+        # Passing absolute values of x,y co-ordinates to find the shortest path from the origin.
+        ShortestPath(abs(x), abs(y)).bfs(np.zeros((abs(x) + 1, abs(y) + 1)), 0, 0, abs(x), abs(y))
 
     else:
         print("Please input in the form F1,B1...")
