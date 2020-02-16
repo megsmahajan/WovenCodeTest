@@ -1,56 +1,73 @@
+# Import packages
 import re
 
 def main():
-    directions = input("Directions: ")
-    each_position = directions.split(",")
-    final_directions = ''
-    for d in each_position:
-        m = re.split('(\d+)', d)
-        final_directions = final_directions + (m[0] * int(m[1]))
 
-    #print(final_directions)
+    # Input from command line for a string of directions.
+    directions = str(input("Directions: "))
 
-    N = 0
-    E = 1
-    S = 2
-    W = 3
+    # Check if input is in the correct form. If yes, proceed with parsing the instructions
+    # and finding the shortest path. If not, ask for correct input from the user.
 
-    dir = N
-    x =0
-    y =0
+    if re.search('[FRBL]\d+', directions):
+        each_position = directions.split(",")
+        final_directions = ''
 
-    # Traverse the path given for robot
-    for move in final_directions:
+        for d in each_position:
+            m = re.split('(\d+)', d)
+            final_directions = final_directions + (m[0] * int(m[1]))
 
-        # Find current move
+        # Defining directions for the robot.
+        N = 0
+        E = 1
+        S = 2
+        W = 3
 
-        # If move is left or right, then change direction
-        if move == 'R':
-            dir = (dir + 1) % 4
-        elif move == 'L':
-            dir = (4 + dir - 1) % 4
+        # Initially, the robot will be facing North.
+        dir = N
 
-        # If move is forward or backward, then change x or y according to the current direction
-        else:  # if move == 'G'
-            if dir == N and move == "F":
-                x -= 1
-            elif dir == N and move == "B":
-                x+=1
-            elif dir == E and move == "F":
-                y += 1
-            elif dir == E and move == "B":
-                y-=1
-            elif dir == S and move == "F":
-                x += 1
-            elif dir == S and move == "B":
-                x-=1
-            elif dir == W and move == "F":
-                y -= 1
-            elif dir == W and move == "B":
-                y +=1
+        # Defining starting position as 0,0.
+        x = 0
+        y = 0
 
-    print ("Final position: ", (x,y))
+        # Traverse the path given for robot
+        for move in final_directions:
 
+            # Find current move
+
+            # If move is left or right, then change direction
+            if move == 'R':
+                dir = (dir + 1) % 4
+            elif move == 'L':
+                dir = (4 + dir - 1) % 4
+
+            # If move is forward or backward, then change x or y according to the current direction
+            # Final stopping position of the robot is in a 2D Matrix and not in the co-ordinate system.
+            else:
+                if dir == N and move == "F":
+                    x -= 1
+                elif dir == N and move == "B":
+                    x += 1
+                elif dir == E and move == "F":
+                    y += 1
+                elif dir == E and move == "B":
+                    y -= 1
+                elif dir == S and move == "F":
+                    x += 1
+                elif dir == S and move == "B":
+                    x -= 1
+                elif dir == W and move == "F":
+                    y -= 1
+                elif dir == W and move == "B":
+                    y += 1
+
+        print("Final position: ", (x, y))
+
+        # The final stopping position of the robot can be in negative space as the robot is moving freely in a 2D space.
+        # But, the distance from the origin of any particular point in negative space is same as the absolute distance.
+
+    else:
+        print("Please input in the form F1,B1...")
 
 if __name__ == '__main__':
     main()
